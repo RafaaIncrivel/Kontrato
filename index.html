@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakto Infernal</title>
+    <!-- Fontes Assustadoras -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Pirata+One&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #000;
+            background-image: radial-gradient(circle, #1a0000 0%, #000 80%);
+            color: #ff0000;
+            font-family: 'Pirata One', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Tela Inicial para permitir áudio */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #start-btn {
+            font-family: 'Creepster', cursive;
+            font-size: 2.5rem;
+            color: #ff0000;
+            background: none;
+            border: 2px solid #ff0000;
+            padding: 20px 40px;
+            cursor: pointer;
+            text-shadow: 0 0 10px #ff0000;
+            transition: 0.5s;
+        }
+
+        #start-btn:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 0 30px #ff0000;
+        }
+
+        .container {
+            max-width: 700px;
+            display: none; /* Escondido até clicar em iniciar */
+        }
+
+        .symbol {
+            width: 250px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px #ff0000);
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        h1 {
+            font-family: 'Nosifer', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .contract-text {
+            font-size: 1.4rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px #000;
+            color: #cc0000;
+            text-align: justify;
+        }
+
+        .contract-text strong {
+            display: block;
+            margin-top: 25px;
+            font-family: 'Creepster', cursive;
+            font-size: 2rem;
+            color: #ff0000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        input, textarea {
+            background: rgba(20, 0, 0, 0.8);
+            border: 1px solid #4a0000;
+            color: #ff4d4d;
+            padding: 15px;
+            font-family: 'Pirata One', cursive;
+            font-size: 1.2rem;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 10px #4a0000;
+        }
+
+        button[type="submit"] {
+            font-family: 'Creepster', cursive;
+            background: #4a0000;
+            color: #fff;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        /* Área de Admin */
+        #admin-trigger { margin-top: 100px; opacity: 0.05; }
+        #admin-panel { display: none; margin-top: 20px; padding: 20px; border: 1px solid #333; }
+        .admin-auth input { font-size: 0.8rem; padding: 5px; width: 100px; }
+    </style>
+</head>
+<body>
+
+    <!-- Overlay Inicial -->
+    <div id="overlay">
+        <button id="start-btn">INIKIAR RITUAL</button>
+    </div>
+
+    <!-- Áudio de Fundo -->
+    <audio id="background-music" loop>
+        <source src="https://drive.google.com/file/d/1ht8SHu6WshmPlkbCLnh7hYGeB4PE-I3a/view?usp=sharing" type="audio/mpeg">
+    </audio>
+
+    <div class="container" id="main-content">
+        <img src="https://i.imgur.com/LiuhdjY.png" alt="Símbolo" class="symbol">
+
+        <h1>Kontrato de Almas</h1>
+
+        <div class="contract-text">
+            Ao konvokar o diabrete, o invokador deklara plena konksiênkia de que assume total responsabilidade por realizar, manter e kumprir todos os requisitos exigidos após a konvokação, sem exceções ou adiamentos. <br><br>
+            Todo pedido formulado será atendido apenas mediante o kumprimento fiel das obrigakões akordadas, sendo estas vinkulantes até sua konklusão total. Falhas, omissões ou tentativas de evasão serão interpretadas como quebra de trato, sujeitas às penalidades implíkitas no pacto. <br><br>
+            O diabrete não se responsabiliza por konsequênkias diretas ou indiretas dekorrentes do desejo solikitado, tampouco por interpretações literais do pedido realizado, aquilo que for dito, eskrito ou sussurrado durante o ritual terá valor de lei infernal. <br>
+            <strong>Tome Responsabilidade pelo o seu pedido</strong>
+        </div>
+
+        <form action="https://formspree.io/f/mbdrnbgn" method="POST">
+            <input type="text" name="nome" placeholder="Seu Nome de Invocador..." required>
+            <textarea name="desejo" placeholder="Descreva seu desejo sombrio..." required></textarea>
+            <button type="submit">SELAR PAKTO ETERNO</button>
+        </form>
+
+        <!-- Área Sekreta -->
+        <div id="admin-trigger">.</div>
+        <div class="admin-auth">
+            <input type="password" id="passInput" placeholder="Chave..." oninput="checkPass()">
+        </div>
+
+        <div id="admin-panel">
+            <h3 style="font-family: 'Nosifer';">Arquivo das Almas</h3>
+            <a href="https://formspree.io/forms" target="_blank" style="color: #ff4d4d; text-decoration: none;">[ ACESSAR REGISTROS ]</a>
+        </div>
+    </div>
+
+    <script>
+        const music = document.getElementById('background-music');
+        const startBtn = document.getElementById('start-btn');
+        const overlay = document.getElementById('overlay');
+        const content = document.getElementById('main-content');
+
+        // Função para iniciar o ritual
+        startBtn.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            content.style.display = 'block';
+            
+            // Configura música
+            music.volume = 0.25; // 25% de volume
+            music.play().catch(error => console.log("Erro ao tocar música:", error));
+        });
+
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            const panel = document.getElementById('admin-panel');
+            if (pass.toLowerCase() === "cebola") {
+                panel.style.display = "block";
+            } else {
+                panel.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
